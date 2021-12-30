@@ -73,7 +73,7 @@ val birthYear = 2020
 var name = "Jone Doe"
 
 var output = "Name -> $name"
-var output2 = "Age -> $${thisYear - birthYear}"
+var output2 = "Age -> ${thisYear - birthYear}"
 
 println(output) // Name -> Jone Doe
 println(output2) // Age -> 1
