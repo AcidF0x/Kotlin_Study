@@ -51,3 +51,51 @@ for (item in array) {
 }
 println(sumOfArray) // 결과 6
 ```
+```kotlin
+val charList = listOf('a', 'b', 'c')
+for (char in charList) {
+    println("$char is Ascii = ${char.code}")
+}
+// 결과
+//a is Ascii = 97
+//b is Ascii = 98
+//c is Ascii = 99
+```
+
+## When
+- 코틀린에서 switch문 대신 사용 하는 문법
+
+### 표현식으로 When
+```kotlin
+fun getHttpResponseCodeCategory(code: Int) = when {
+    code in 100..199 -> "informational response"
+    code in 200..299 -> "successful"
+    code in 300..399 -> "redirection"
+    code in 400..499 -> "client error"
+    code in 500.. 599 -> "server error"
+    else -> "unknown"
+}
+
+println("404 code is " + getHttpResponseCodeCategory(404)) // 404 code is client error
+println("999 code is " + getHttpResponseCodeCategory(999)) // 999 code is unknown
+```
+
+```kotlin
+fun testWhen(arg: Any?) = when (arg) {
+    "hi", "hello" -> "Hello World"
+    in listOf("foo", "baz") -> "foo baz"
+    in 1..100 -> "1<=$arg<=100"
+    is String -> "Is String"
+    null -> "this is null"
+    else -> "else"
+}
+
+
+println(testWhen("hi")) // Hello World
+println(testWhen("foo")) // foo baz
+println(testWhen(50)) // 1<=50<=100
+println(testWhen("this_is_string")) // Is String
+println(testWhen(null)) // this is null
+println(testWhen("안녕하세요")) // else
+```
+- 표현식으로 사용되는 경우 `else`가 반드시 존재해야함
